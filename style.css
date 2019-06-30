@@ -1,0 +1,38 @@
+body {
+  margin-top: 150px;
+  text-align: center;
+  font-family: 'Fjalla One';
+  font-size: 40px;
+  background: #A9B6C0;
+}
+button {
+  margin: 30px; 
+  padding: 10px; 
+  font-size: 15px;
+  border-radius: 10px;
+  border: 2px solid black;
+  
+}
+
+button:hover {
+  font-weight: bold;
+  border-color: green;
+}
+
+input {
+  font-size: 34px;  
+}
+
+input:hover {
+  border-color: gray;
+
+}
+
+.fill {
+  background: white;
+  color: red;
+  border-bottom: 2px black solid;
+  font-family: 'Shadows Into Light';
+  padding: 0 6px;
+  margin: 4px;
+}

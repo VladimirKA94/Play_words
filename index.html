@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>A malibs game</title>
+	<script src="jquery-3.3.1.min.js"></script>
+	<link href="style.css" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light" rel="stylesheet">
+</head>
+
+<body>
+	<div class="prompt"></div>
+	<button>Далее</button>
+	<script>
+	// Список подсказок для пользователя
+	var prompts = [
+		'Как Вас зовут?',
+		'Ваша фамилия?',
+		'Сколько Вам лет?'
+   	];
+
+	var answers=[];
+
+	// Следит за текущей подсказкой, на которой мы находимся
+	var currentPrompt = 0;
+
+	// Функция, которая будет вызывать следующую подсказку
+	var nextPrompt = function() {
+	  // если нет ответа в форме
+	  if (currentPrompt != 0){
+	    answers.push($('input').val());
+	  }
+		// если есть следующая подсказка
+		if (currentPrompt < prompts.length) {
+			// поставить первый запрос во всех элементах HTML с классом
+			$('.prompt').html(prompts[currentPrompt] +'<br><input type="text">');
+			// переместить следующий запрос в переменную currentPrompt
+			currentPrompt = currentPrompt + 1;
+		}
+		//или если мы находимся в конце массива
+		else {
+			// поместите новое сообщение в HTML.
+			showFinal();
+		}
+	}
+
+	//puts user answers into HTML
+	var showFinal = function() {
+	  $('.prompt').html('Меня зовут <span class="fill">'+ answers[0]+'</span> <span class="fill">'+answers[1]+'</span> и мне <span class="fill">'+answers[2]+'</span> года.');
+	  $('button').hide();
+	}
+	  
+	// помещает пользовательские ответы в HTML
+	$('button').click(function() {
+		nextPrompt();
+	});
+
+	// Показать первый запрос, как только загрузится js
+	nextPrompt();
+	</script>
+
+</body>
+</html>
